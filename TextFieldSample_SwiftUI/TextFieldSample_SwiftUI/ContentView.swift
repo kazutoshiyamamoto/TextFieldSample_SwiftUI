@@ -20,7 +20,7 @@ struct ContentView: View {
                 .frame(width: 250)
             
             // 変数textの値が数字でなければメッセージを表示
-            if !isNumber(text: text) {
+            if !isNumericString(text: text) {
                 Text("数字を入力してください")
                     .frame(width: 250, height: 50)
                     .foregroundColor(Color.red)
@@ -28,7 +28,8 @@ struct ContentView: View {
         }
     }
     
-    func isNumber(text: String) -> Bool {
+    // 引数の文字列が数字の文字列かどうか判定
+    func isNumericString(text: String) -> Bool {
         if Int(text) == nil {
             return false
         } else {

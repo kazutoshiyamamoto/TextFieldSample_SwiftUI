@@ -9,22 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    // @StateをつけることでloginIdの値の変化を監視
-    @State var loginId: String = ""
+    // @Stateをつけることでtextの値の変化を監視
+    @State var text: String = ""
     
     var body: some View {
         VStack {
-            // 変数loginIdの値をTextFieldに入力された文字に更新
-            TextField("文字を入力", text: $loginId)
+            // 変数textの値をTextFieldに入力された文字に更新
+            TextField("数字を入力", text: $text)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 250)
             
-            // 変数loginIdの値が空であればメッセージを表示
-            if loginId.isEmpty {
-                Text("文字を入力してください")
+            // 変数textの値が数字でなければメッセージを表示
+            if !isNumber(text: text) {
+                Text("数字を入力してください")
                     .frame(width: 250, height: 50)
                     .foregroundColor(Color.red)
             }
+        }
+    }
+    
+    func isNumber(text: String) -> Bool {
+        if Int(text) == nil {
+            return false
+        } else {
+            return true
         }
     }
 }

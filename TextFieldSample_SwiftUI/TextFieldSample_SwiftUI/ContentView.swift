@@ -16,7 +16,7 @@ struct ContentView: View {
         VStack {
             // 引数にContentViewのtextを設定することで、
             // TextFieldSampleの変数textが結びつく
-            TextFieldSample(text: $text)
+            TextFieldSample(placeholder: "数字を入力", text: $text)
             
             // 変数textの値が数字でなければメッセージを表示
             if !isNumericString(text: text) {
@@ -37,11 +37,13 @@ struct ContentView: View {
     }
 }
 
+// 使いまわせるようにContentViewから切り出したTextField
 struct TextFieldSample: View {
+    var placeholder : String
     @Binding var text: String
     
     var body: some View {
-        TextField("数字を入力", text: $text)
+        TextField(placeholder, text: $text)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .frame(width: 250)
     }

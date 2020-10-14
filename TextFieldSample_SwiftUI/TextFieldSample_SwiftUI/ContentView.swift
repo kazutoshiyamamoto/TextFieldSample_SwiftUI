@@ -9,15 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    // @Stateをつけることでtextの値の変化を監視
+    // TextFieldSampleに入力された値の変化を監視
     @State var text: String = ""
     
     var body: some View {
         VStack {
-            // 変数textの値をTextFieldに入力された文字に更新
-            TextField("数字を入力", text: $text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 250)
+            // 引数にContentViewのtextを設定することで、
+            // TextFieldSampleの変数textが結びつく
+            TextFieldSample(text: $text)
             
             // 変数textの値が数字でなければメッセージを表示
             if !isNumericString(text: text) {
@@ -35,6 +34,16 @@ struct ContentView: View {
         } else {
             return true
         }
+    }
+}
+
+struct TextFieldSample: View {
+    @Binding var text: String
+    
+    var body: some View {
+        TextField("数字を入力", text: $text)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .frame(width: 250)
     }
 }
 

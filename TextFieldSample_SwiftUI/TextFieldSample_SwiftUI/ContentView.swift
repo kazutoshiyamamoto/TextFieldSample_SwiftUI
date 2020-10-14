@@ -9,18 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    // TextFieldSampleに入力された値の変化を監視
-    @State var text: String = ""
+    // ContentViewModelの@Publishedをつけた変数を利用するため@ObservedObjectをつける
+    @ObservedObject var viewModel: ContentViewModel
+    
+    init(viewModel: ContentViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
-        // 引数に代入したContentViewの変数textが
-        // TextFieldSampleの変数textに結びつく
-        TextFieldSample(placeholder: "数字を入力", text: $text)
+        VStack {
+            // 文字を入力するごとにContentViewModelクラスの変数textの値が更新される
+            TextField("数字を入力", text: $viewModel.text)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 250)
+            
+            // ContentViewModelクラスの変数isNumericStringが更新されるたびに以下の処理を実行する
+            if !viewModel.isNumericString {
+                Text("数字を入力してください")
+                    .frame(width: 250, height: 50)
+                    .foregroundColor(Color.red)
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

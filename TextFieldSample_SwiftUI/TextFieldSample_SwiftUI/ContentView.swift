@@ -13,10 +13,22 @@ struct ContentView: View {
     @State var text: String = ""
     
     var body: some View {
+        // 引数に代入したContentViewの変数textが
+        // TextFieldSampleの変数textに結びつく
+        TextFieldSample(placeholder: "数字を入力", text: $text)
+    }
+}
+
+// 使いまわせるようにContentViewから切り出したTextField
+struct TextFieldSample: View {
+    var placeholder : String
+    @Binding var text: String
+    
+    var body: some View {
         VStack {
-            // 引数にContentViewのtextを設定することで、
-            // TextFieldSampleの変数textが結びつく
-            TextFieldSample(placeholder: "数字を入力", text: $text)
+            TextField(placeholder, text: $text)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 250)
             
             // 変数textの値が数字でなければメッセージを表示
             if !isNumericString(text: text) {
@@ -34,18 +46,6 @@ struct ContentView: View {
         } else {
             return true
         }
-    }
-}
-
-// 使いまわせるようにContentViewから切り出したTextField
-struct TextFieldSample: View {
-    var placeholder : String
-    @Binding var text: String
-    
-    var body: some View {
-        TextField(placeholder, text: $text)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .frame(width: 250)
     }
 }
 

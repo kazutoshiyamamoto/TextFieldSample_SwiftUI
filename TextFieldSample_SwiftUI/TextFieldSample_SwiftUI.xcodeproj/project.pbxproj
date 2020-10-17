@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD159232253B190A009FA851 /* SharedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD159231253B190A009FA851 /* SharedTextView.swift */; };
 		FDB2D7E22535CAF300D18D38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB2D7E12535CAF300D18D38 /* AppDelegate.swift */; };
 		FDB2D7E42535CAF300D18D38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB2D7E32535CAF300D18D38 /* SceneDelegate.swift */; };
 		FDB2D7E62535CAF300D18D38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB2D7E52535CAF300D18D38 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD159231253B190A009FA851 /* SharedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTextView.swift; sourceTree = "<group>"; };
 		FDB2D7DE2535CAF300D18D38 /* TextFieldSample_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldSample_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB2D7E12535CAF300D18D38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDB2D7E32535CAF300D18D38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				FDB2D7E52535CAF300D18D38 /* ContentView.swift */,
 				FDB2D7F72536F59B00D18D38 /* ContentViewModel.swift */,
 				FDB2D7F92536F86200D18D38 /* CharacterDiscrimination.swift */,
+				FD159231253B190A009FA851 /* SharedTextView.swift */,
 				FDB2D7F52536DE3400D18D38 /* TextFieldSample.swift */,
 				FDB2D7E72535CAF800D18D38 /* Assets.xcassets */,
 				FDB2D7EC2535CAF800D18D38 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDB2D7FA2536F86200D18D38 /* CharacterDiscrimination.swift in Sources */,
+				FD159232253B190A009FA851 /* SharedTextView.swift in Sources */,
 				FDB2D7E22535CAF300D18D38 /* AppDelegate.swift in Sources */,
 				FDB2D7E42535CAF300D18D38 /* SceneDelegate.swift in Sources */,
 				FDB2D7E62535CAF300D18D38 /* ContentView.swift in Sources */,

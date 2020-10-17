@@ -10,24 +10,38 @@ import SwiftUI
 
 struct ContentView: View {
     // ContentViewModelの@Publishedをつけた変数を利用するため@ObservedObjectをつける
-    @ObservedObject var viewModel: ContentViewModel
+    @EnvironmentObject var viewModel: ContentViewModel
     
-    init(viewModel: ContentViewModel) {
-        self.viewModel = viewModel
-    }
+    //    init(viewModel: ContentViewModel) {
+    //        self.viewModel = viewModel
+    //    }
     
     var body: some View {
-        VStack {
-            // 文字を入力するごとにContentViewModelクラスの変数textの値が更新される
-            TextField("数字を入力", text: $viewModel.text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 250)
-            
-            // ContentViewModelクラスの変数isNumericStringが更新されるたびに以下の処理を実行する
-            if !viewModel.isNumericString {
-                Text("数字を入力してください")
-                    .frame(width: 250, height: 50)
-                    .foregroundColor(Color.red)
+        NavigationView {
+            VStack {
+                VStack(alignment: .center) {
+                    // 文字を入力するごとにContentViewModelクラスの変数textの値が更新される
+                    TextField("数字を入力", text: $viewModel.text)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 250)
+                    
+                    // ContentViewModelクラスの変数isNumericStringが更新されるたびに以下の処理を実行する
+                    if !viewModel.isNumericString {
+                        Text("数字を入力してください")
+                            .frame(width: 250, height: 50)
+                            .foregroundColor(Color.red)
+                    }
+                }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                
+                NavigationLink(destination: SharedTextView().environmentObject(self.viewModel)) {
+                    Text("値の共有を確認する")
+                        .frame(width: 200, height: 50)
+                        .foregroundColor(Color.white)
+                        .background(Color.blue)
+                        .cornerRadius(10, antialiased: true)
+                }
+                .navigationBarTitle("Sample")
             }
         }
     }

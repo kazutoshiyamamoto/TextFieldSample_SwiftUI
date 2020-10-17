@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SharedTextView: View {
+    @EnvironmentObject var viewModel: ContentViewModel
+    
     var body: some View {
         Text("TextFieldには「\(viewModel.text)」が入力されています")
     }

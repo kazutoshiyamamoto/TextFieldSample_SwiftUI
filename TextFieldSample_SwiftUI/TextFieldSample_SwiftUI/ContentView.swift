@@ -12,10 +12,6 @@ struct ContentView: View {
     // SceneDelegateでインスタンス化したContentViewModelの@Publishedをつけた変数を利用するため@EnvironmentObjectをつける
     @EnvironmentObject var viewModel: ContentViewModel
     
-    //    init(viewModel: ContentViewModel) {
-    //        self.viewModel = viewModel
-    //    }
-    
     var body: some View {
         NavigationView {
             VStack {

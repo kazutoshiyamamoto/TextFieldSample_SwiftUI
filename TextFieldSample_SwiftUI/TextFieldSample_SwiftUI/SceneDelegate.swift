@@ -16,6 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let model = CharacterDiscrimination()
+            // environmentObject(_:)でContentViewModelクラスのインスタンスを指定することで、
+            // アプリ全体でこのインスタンスの@Publishedを付けたプロパティを共有できる
             let view = ContentView().environmentObject(ContentViewModel(model: model))
             
             let window = UIWindow(windowScene: windowScene)

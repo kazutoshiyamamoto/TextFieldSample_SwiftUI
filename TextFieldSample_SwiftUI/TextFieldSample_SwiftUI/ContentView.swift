@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    // ContentViewModelの@Publishedをつけた変数を利用するため@ObservedObjectをつける
+    // SceneDelegateでインスタンス化したContentViewModelの@Publishedをつけた変数を利用するため@EnvironmentObjectをつける
     @EnvironmentObject var viewModel: ContentViewModel
     
     //    init(viewModel: ContentViewModel) {
@@ -34,6 +34,7 @@ struct ContentView: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                 
+                // 遷移先のSharedTextViewの変数ViewModelにSceneDelegateでインスタンス化したContentViewModelを共有する
                 NavigationLink(destination: SharedTextView().environmentObject(self.viewModel)) {
                     Text("値の共有を確認する")
                         .frame(width: 200, height: 50)

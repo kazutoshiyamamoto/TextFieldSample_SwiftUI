@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     // SceneDelegateでインスタンス化したContentViewModelの@Publishedをつけた変数を利用するため@EnvironmentObjectをつける
-    @EnvironmentObject var viewModel: ContentViewModel
+    @StateObject var viewModel = ContentViewModel(model: CharacterDiscrimination())
     
     var body: some View {
         NavigationView {

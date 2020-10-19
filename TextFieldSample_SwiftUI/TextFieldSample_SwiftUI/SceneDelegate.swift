@@ -12,18 +12,18 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        if let windowScene = scene as? UIWindowScene {
-            let model = CharacterDiscrimination()
-            // environmentObject(_:)でContentViewModelクラスのインスタンスを指定することで、
-            // アプリ全体でこのインスタンスの@Publishedを付けたプロパティを共有できる
-            let view = ContentView().environmentObject(ContentViewModel(model: model))
-            
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: view)
-            self.window = window
-            window.makeKeyAndVisible()
+        
+        let contentView = ContentView()
+        
+        if scene is UIWindowScene {
+            if let windowScene = scene as? UIWindowScene {
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = UIHostingController(rootView: contentView)
+                self.window = window
+                window.makeKeyAndVisible()
+            }
         }
     }
     

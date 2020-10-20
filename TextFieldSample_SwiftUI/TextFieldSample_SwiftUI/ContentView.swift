@@ -9,7 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    // SceneDelegateでインスタンス化したContentViewModelの@Publishedをつけた変数を利用するため@EnvironmentObjectをつける
+    // View内で監視対象のクラスをインスタンス化する場合は、
+    // インスタンスが1つしか生成しないことを保証するため@StateObjectをつける
+    // これによって仮にContentViewが再生成されたとしてもviewModelのインスタンスは再生成されなくなるため、
+    // 意図した値の監視が可能になる
     @StateObject var viewModel = ContentViewModel(model: CharacterDiscrimination())
     
     var body: some View {
